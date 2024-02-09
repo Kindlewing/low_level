@@ -15,16 +15,21 @@ SRCS = $(wildcard $(SRCDIR)/*.c)
 # Object files
 OBJS = $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS))
 
+
+
 # Target
-TARGET = main
+TARGET = build/main
 
 # Target rules
 $(TARGET): $(OBJS)
 	$(CC) -o $@ $^
 
 # Object file rules
-$(BUILDDIR)/%.o: $(SRCDIR)/%.c
+$(BUILDDIR)/%.o: $(SRCDIR)/%.c | $(BUILDDIR)
 	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(BUILDDIR):
+	mkdir -p $(BUILDDIR)
 
 # Clean rule
 clean:

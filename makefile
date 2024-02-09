@@ -31,6 +31,10 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.c | $(BUILDDIR)
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
 
+run:
+	./$(TARGET)
+
+
 # Clean rule
 clean:
 	rm -f $(BUILDDIR)/*.o $(TARGET)

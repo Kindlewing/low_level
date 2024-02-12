@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <sys/socket.h>
 
-int main(int argc, char *argv[]) {
+int main() {
 	struct sockaddr_in *address;
 
 	int socket_fd = socket(AF_LOCAL, SOCK_STREAM, 0);
@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
 	address->sin_port = 1024;
 	address->sin_addr.s_addr = inet_addr("127.0.0.1");
 
-	if (!bind(socket_fd, (struct sockaddr *)address, sizeof(*address))) {
+	if (bind(socket_fd, (struct sockaddr *)address, sizeof(*address)) == -1) {
 		return -1;
 	}
 	printf("Bound socket to 127.0.0.1\n");

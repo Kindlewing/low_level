@@ -26,7 +26,7 @@ $(TARGET): $(OBJS)
 
 # Object file rules
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c | $(BUILDDIR)
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $< -g
 
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)

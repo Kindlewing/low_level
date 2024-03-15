@@ -5,7 +5,7 @@
 #include <sys/socket.h>
 
 int main() {
-	printf("Hello, World~\n");
+	printf("Hello, World\n");
 	struct sockaddr_in address;
 
 	int socket_fd = socket(AF_LOCAL, SOCK_STREAM, 0);
@@ -20,6 +20,7 @@ int main() {
 	address.sin_addr.s_addr = inet_addr("127.0.0.1");
 
 	if (bind(socket_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
+		printf("Couldn't bind to socket\n");
 		return -1;
 	}
 	printf("Bound socket to 127.0.0.1\n");

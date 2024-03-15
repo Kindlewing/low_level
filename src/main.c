@@ -5,6 +5,7 @@
 #include <sys/socket.h>
 
 int main() {
+	printf("Hello, World~\n");
 	struct sockaddr_in address;
 
 	int socket_fd = socket(AF_LOCAL, SOCK_STREAM, 0);

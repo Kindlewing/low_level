@@ -10,7 +10,7 @@ CC=gcc
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 CFLAGS=$(INC_FLAGS) -Wall -Wextra -std=c99 -MMD
 
-$(TARGET_EXEC): $(OBJS)
+$(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
 	$(CC) $(OBJS) -o $@ $(LDFLAGS)
 
 $(BUILD_DIR)/%.c.o: %.c
@@ -20,7 +20,6 @@ $(BUILD_DIR)/%.c.o: %.c
 .PHONY: clean
 clean:
 	rm -r $(BUILD_DIR)
-	rm $(TARGET_EXEC)
 
 -include $(DEPS)
 

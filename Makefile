@@ -1,12 +1,16 @@
+TARGET=main
 SRC=src
-
 SRC_FILES=$(wildcard *.c)
-
 
 CFLAGS = -Wall -Wextra -std=c11 -pedantic
 CC=gcc
-LIBS=
 
-main: $(SRC)/$(SRC_FILES)
-	$(CC) $(CFLAGS) -o main $(SRC)/$(SRC_FILES) $(LIBS)
+OBJECTS=$(patsubst %.c, %.o, $(wildcard *.c))
+HEADERS=$(wildcard *.h)
+
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(TARGET): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $@ 
 
